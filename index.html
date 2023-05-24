@@ -21,11 +21,20 @@
 
 <body>
 
+    <div class="pre_loader">
+        <div class="preload_layer">
+            <img src="https://cdn.pixabay.com/animation/2022/10/12/22/41/22-41-33-918_512.gif"
+                alt="capital technologies preloader logo" class="preloader_logo text-center" height="auto"
+                width="120px" />
+            <figcaption class="h4 mt-3 text-center">Loading</figcaption>
+        </div>
+    </div>
+
 
     <div class="fullscreen_bg">
         <!-- menu and form  -->
 
-        <div class="box_contianer d-flex justify-content-center align-items-center border border-warning display_none">
+        <div class="box_contianer d-flex justify-content-center align-items-center" id="mainmenu">
             <div class="menu_container shadow-lg rounded-2 col-lg-4 col-md-6 col-sm-8 col-11 ">
                 <div class="text-center py-2">
                     <img src="img/logo.png" height="auto" width="200px" alt="word hunt logo">
@@ -85,7 +94,7 @@
             </div>
         </div>
 
-        <div class="box_container p-2">
+        <div class="box_container p-2 display_none" id="gameView">
             <div class="gameView w-100 h-100">
                 <div class="row m-0 justify-content-between">
                     <div class="col-6">
@@ -249,8 +258,8 @@
                         <div class="mt-5 text-center">
                             <button class="btn btn_skip shadow p-2 px-5 my-2 mx-2 fw-bold"
                                 id="shuffleWord">SHUFFLE</button>
-                            <button class="btn btn_next shadow p-2 px-5 my-2 mx-2 fw-bold" id="backWord">BACK</button>
-                            <button class="btn btn_next shadow p-2 px-5 my-2 mx-2 fw-bold" id="nextWord">NEXT</button>
+                            <button class="btn btn_next shadow p-2 px-5 my-2 mx-2 fw-bold" id="resultBtn"
+                                data-bs-toggle="modal" data-bs-target="#resultModal">RESULTS</button>
                         </div>
                     </div>
                 </div>
@@ -406,6 +415,45 @@
             </div>
         </div>
 
+        <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 resultTitle" id="resultModalLabel">RESULTS OF <span class="text-uppercase" id="userNameTitle"></span></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="circle">
+                            <svg width="150px" height="150px">
+                                <circle cx="70" cy="70" r="70"></circle>
+                                <circle id="circle-stroke" cx="70" cy="70" r="70"></circle>
+                                <defs>
+                                    <linearGradient id="bluegrad">
+                                        <stop id="stop1" offset="0%" stop-color="#2DCCE2" />
+                                        <stop id="stop2" offset="100%" stop-color="#0074E0" />
+                                    </linearGradient>
+                                    <linearGradient id="greengrad">
+                                        <stop id="stop1" offset="0%" stop-color="#51E22D" />
+                                        <stop id="stop2" offset="100%" stop-color="#00E08F" />
+                                    </linearGradient>
+                                    <linearGradient id="redgrad">
+                                        <stop id="stop1" offset="0%" stop-color="#F11111" />
+                                        <stop id="stop2" offset="100%" stop-color="#DC00E0" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="number"></div>
+                            <div class="score-subtitle text-muted">your score</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn_play" id="getOptionsval" data-bs-dismiss="modal"
+                            aria-label="Close">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 
@@ -424,6 +472,12 @@
 
     <script>
         $(document).ready(function () {
+
+            window.addEventListener("load", function () {
+                const preloader = document.querySelector(".pre_loader");
+                preloader.classList.add("preloader_hide");
+            });
+
             $(".btn_loginNext").click(function (e) {
                 e.preventDefault();
 
@@ -434,26 +488,49 @@
                     $(".custom_alert").slideDown();
                     $(".printMSG").html("LOGIN SUCCESSFULLY" + ' ' + userName);
                     $(".printMSG").removeClass("text-danger").addClass("text-success");
+
+                    setTimeout(function () {
+                        $(".custom_alert").slideUp();
+                    }, 3000);
+
                 } else {
                     $(".custom_alert").slideDown();
                     $(".printMSG").html("INVALID NAME OR PASSWORD");
                     $(".printMSG").removeClass("text-success").addClass("text-danger");
+
+                    setTimeout(function () {
+                        $(".custom_alert").slideUp();
+                    }, 3000);
+
                 }
             })
 
-            $(".cancel_alert").click(function () {
-                $(".custom_alert").slideUp(function () {
-                    if ($(".printMSG").hasClass("text-success")) {
-                        $("#login_form").hide();
-                        $("#userMenu").show();
-                    } else {
-                        $("#login_form").show();
-                        $("#userMenu").hide();
-                    }
-                });
+            $(".btn_loginNext").click(function () {
+
+                $(".pre_loader").removeClass("preloader_hide");
+                setTimeout(function () {
+                    $(".pre_loader").addClass("preloader_hide");
+                }, 1800);
+
+
+                if ($(".printMSG").hasClass("text-success")) {
+                    $("#login_form").hide();
+                    $("#userMenu").show();
+                } else {
+                    $("#login_form").show();
+                    $("#userMenu").hide();
+                }
             })
             $("#playSelect").click(function (e) {
                 e.preventDefault();
+                $(".pre_loader").removeClass("preloader_hide");
+                setTimeout(function () {
+                    $(".pre_loader").addClass("preloader_hide");
+                }, 1800);
+
+                $("#mainmenu").addClass("display_none");
+                $("#gameView").removeClass("display_none");
+                console.log("pillay");
             })
             $("#levelSelect").click(function (e) {
                 e.preventDefault();
@@ -470,6 +547,10 @@
                 $(".custom_alert").slideDown();
                 $(".printMSG").html("YOU HAVE SELECTED" + ' ' + checkdataName + ' ' + "LEVEL");
                 $(".printMSG").removeClass("text-danger").addClass("text-success");
+
+                setTimeout(function () {
+                    $(".custom_alert").slideUp();
+                }, 2500);
             })
 
 
@@ -500,6 +581,7 @@
 
             });
 
+
             // array for scramble words 
 
             wordsArr = [
@@ -512,6 +594,10 @@
 
             $("#startGame").click(function (e) {
                 e.preventDefault();
+                $(".pre_loader").removeClass("preloader_hide");
+                setTimeout(function () {
+                    $(".pre_loader").addClass("preloader_hide");
+                }, 1000);
                 $(".startBtn").addClass("display_none");
                 $(".solutionLetter").removeClass("display_none");
 
@@ -546,70 +632,101 @@
                 //         console.log("nh");
                 //     }
 
-                $("#scrambleAns").keyup(function () {
-                    let userAnswer = $(this).val();
+                let rightAnswer = 0;
+                let wrongAnswer = 0;
 
-                    if (userAnswer === wordsArr[currentIndex]) {
+                $("#scrambleAns").keyup(function (e) {
 
-                        $(".custom_alert").slideDown();
-                        $(".printMSG").html("CORRECT ASNWER");
-                        $(".printMSG").removeClass("text-danger").addClass("text-success");
+                    if (e.keyCode == 13) {
 
-                        currentIndex++;
+                        let userAnswer = $(this).val();
 
-                        if (currentIndex < wordsArr.length) {
-                            var characters = wordsArr[currentIndex].split('');
-                            var shuffledCharacters = characters.sort(function () {
-                                return 0.5 - Math.random();
-                            });
-                            var shuffledText = shuffledCharacters.join('');
+                        if (userAnswer === wordsArr[currentIndex]) {
 
-                            $(".scrambleChoco").empty().append('<span class="printScramble">' + shuffledText.toUpperCase() + '</span>');
+                            $(this).val('');
 
-                            $("#nextWord").click(function () {
 
-                            })
+                            $(".custom_alert").slideDown();
+                            $(".printMSG").html("CORRECT ASNWER" + ' ' + "(+1 Point)");
+                            $(".printMSG").removeClass("text-danger").addClass("text-success");
+                            rightAnswer++;
+
+                            console.log(rightAnswer);
+
+                            setTimeout(function () {
+                                $(".custom_alert").slideUp();
+                            }, 2500);
+
+
+
+
+                            currentIndex++;
+
+                            if (currentIndex < wordsArr.length) {
+                                var characters = wordsArr[currentIndex].split('');
+                                var shuffledCharacters = characters.sort(function () {
+                                    return 0.5 - Math.random();
+                                });
+                                var shuffledText = shuffledCharacters.join('');
+
+                                $(".scrambleChoco").empty().append('<span class="printScramble">' + shuffledText.toUpperCase() + '</span>');
+
+                                $("#nextWord").click(function () {
+
+                                })
 
                             }
 
 
+
+                        } else {
+                            $(".custom_alert").slideDown();
+                            $(".printMSG").html("WRONG ASNWER" + ' ' + "(-1 Point)");
+                            $(".printMSG").addClass("text-danger").removeClass("text-success");
+                            wrongAnswer = rightAnswer - 1;
+                            console.log(wrongAnswer);
+                            // console.log("new" + rightAnswer);
+                            setTimeout(function () {
+                                $(".custom_alert").slideUp();
+                            }, 2500);
+                        }
+
+
                     }
 
-                    })
-
-
-
-
-                $("#backWord").click(function () {
-                    currentIndex--;
-                    if (currentIndex < wordsArr.length) {
-                        var characters = wordsArr[currentIndex].split('');
-                        var shuffledCharacters = characters.sort(function () {
-                            return 0.5 - Math.random();
-                        });
-                        var shuffledText = shuffledCharacters.join('');
-
-                        $(".scrambleChoco").empty().append('<span class="printScramble">' + shuffledText.toUpperCase() + '</span>');
-                    }
                 })
 
+                $("#resultBtn").click(function () {
+                    $("#userNameTitle").append($("#name").val());
+
+                    let resultUser = rightAnswer;
+                    console.log(resultUser);
 
 
+
+                    var color = "blue";
+                    var score = resultUser;
+                    var val = 100 - (100 * score) / 10;
+                    if (score >= 7) color = "green";
+                    else if (score <= 3) color = "red";
+                    var stroke = "#" + color + "grad";
+                    var text_color = color + "-grad-text";
+                    $(".number").addClass(text_color);
+                    $(".number").html(score);
+
+                    $("#circle-stroke").css("stroke", `url(${stroke})`);
+                    $("#circle-stroke").animate(
+                        {
+                            "stroke-dashoffset": val
+                        },
+                        1000
+                    );
+
+                })
 
             })
 
-
-
         })
-
-        $(document).ready(function () {
-            // Add click event listener to the "Shuffle" button
-            $('#clickScramble').on('click', function () {
-                // Get the text content of the span
-
-            });
-        });
-
     </script>
 
 </body>
