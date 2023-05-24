@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Play Word Search | Abdul Ahad Portfolio</title>
+
+    <!-- CSS SCRIPTS CDNS  -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="index.css">
+
+    <link rel="shortcut icon"
+        href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEoj1TAIqlLnTvFLcNLqsjAq55NidfD0tRvg&usqp=CAU"
+        type="image/x-icon">
+
+</head>
+
+<body>
+
+
+    <div class="fullscreen_bg">
+        <div class="box_contianer d-flex justify-content-center align-items-center">
+            <div class="menu_container shadow-lg rounded-2 col-lg-4 col-md-6 col-sm-8 col-11">
+                <div class="text-center py-2">
+                    <img src="img/41d7299b-376d-4f06-be5f-2592edccb545.jfif" height="auto" width="250px"
+                        alt="word hunt logo">
+                </div>
+                <!-- <form class="p-3 mt-4" id="login_form">
+                    <div class="mb-3">
+                        <label for="name" class="form-label text-white">Username</label>
+                        <input type="text" class="form-control bg-transparent text-white" id="name"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label text-white">Password</label>
+                        <input type="text" class="form-control bg-transparent text-white" id="password"
+                            aria-describedby="password">
+                    </div>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn_loginNext fw-bold py-2">REGISTER</button>
+                    </div>
+                </form> -->
+
+
+                <form class="p-3 mt-4" id="userMenu">
+                    <div class="my-3 text-center">
+                        <button type="submit" class="btn btn_play fw-bold py-2 px-5" id="playSelect">PLAY
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                </svg></span>
+                        </button>
+                    </div>
+                    <div class="my-3 text-center">
+                        <button type="submit" class="btn btn_play fw-bold py-2 px-5" id="levelSelect"
+                            data-bs-toggle="modal" data-bs-target="#levelModal">LEVELS
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                </svg></span>
+                        </button>
+                    </div>
+                    <div class="my-3 text-center">
+                        <button type="submit" class="btn btn_play fw-bold py-2 px-5" id="optionsSelect"
+                            data-bs-toggle="modal" data-bs-target="#optionsModal">OPTIONS
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                </svg></span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="col-12 text-center mt-3">
+                    <span class="text-white">Designed & Developed by Abdul Ahad</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom_bar p-2 w-100">
+            <div class="row m-0 justify-content-between">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <span class="text-white">Copyright &copy; Created by Abdul Ahad</span>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 text-end">
+                    <span class="text-white fw-bold">Mail us at: </span><a class="text-white text-decoration-none"
+                        target="_blank"
+                        href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=GTvVlcSMScbWHCHXZSKfHlLbLRTDWhsWXWshhZkmbndpFPCGndcvWFrMnLDlkcFBsCHGHlCvHZRhP">sayyedxworks@gmail.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="custom_alert col-lg-3 col-md-3 col-sm-8 col-12 shadow-lg p-2">
+            <div class="top_custom_alert p-1">
+                <div class="d-flex justify-content-between">
+                    <div class="col-6">
+                        <span class="fw-bold">Message</span>
+                    </div>
+                    <div class="col-6 text-end">
+                        <span class="cursor_pointer cancel_alert"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                                height="18" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg></span>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="message_alert p-1">
+                <p class="fw-bold"> <span class="printMSG text-uppercase"></span>
+                </p>
+            </div>
+        </div>
+
+
+
+        <!-- level Modal -->
+        <div class="modal fade" id="levelModal" tabindex="-1" aria-labelledby="levelModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="levelModalLabel">Select the level as you wish</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-check my-2">
+                            <input class="form-check-input shadow-none me-2" type="radio" data-name="easy"
+                                name="levelRadiobtn" id="easy">
+                            <label class="form-check-label levelRadio" for="easy">
+                                Easy
+                            </label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input shadow-none me-2" type="radio" data-name="medium"
+                                name="levelRadiobtn" id="medium" checked>
+                            <label class="form-check-label levelRadio" for="medium">
+                                Medium
+                            </label>
+                        </div>
+                        <div class="form-check my-2">
+                            <input class="form-check-input shadow-none me-2" type="radio" data-name="hard"
+                                name="levelRadiobtn" id="difficult" checked>
+                            <label class="form-check-label levelRadio" for="difficult">
+                                Hard
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn_play" id="getradioVal" data-bs-dismiss="modal"
+                            aria-label="Close">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- options Modal -->
+        <div class="modal fade" id="optionsModal" tabindex="-1" aria-labelledby="optionsModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="optionsModalLabel">Customize it as you wish</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-check form-switch my-3">
+                            <input class="form-check-input shadow-none" type="checkbox" role="switch" id="musicToggle"
+                                disabled>
+                            <label class="form-check-label" for="musicToggle">Music</label>
+                        </div>
+                        <div class="form-check form-switch my-3">
+                            <input class="form-check-input shadow-none" type="checkbox" role="switch"
+                                id="fullscreenToggle">
+                            <label class="form-check-label" for="fullscreenToggle">Fullscreen</label>
+                        </div>
+
+                        <hr>
+
+                        <div class="themeSelect">
+                            <p class="my-3">
+                                Select your Theme
+                            </p>
+                            <div class="row m-0 my-2">
+                                <div class="col-6">
+                                    <div class="theme_image">
+                                        <img src="img/day.webp" alt="image" height="100%" width="100%"
+                                            class="img-fluid themeImage cursor_pointer">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="theme_image">
+                                        <img src="img/night.webp" alt="image" height="100%" width="100%"
+                                            class="img-fluid themeImage cursor_pointer">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-0 my-2">
+                                <div class="col-6">
+                                    <div class="theme_image">
+                                        <img src="img/mountain.webp" alt="image" height="100%" width="100%"
+                                            class="img-fluid themeImage cursor_pointer">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="theme_image">
+                                        <img src="img/snow.webp" alt="image" height="100%" width="100%"
+                                            class="img-fluid themeImage cursor_pointer">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn_play" id="getOptionsval" data-bs-dismiss="modal"
+                            aria-label="Close">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <!-- JS SCRIPTS CDNS  -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".btn_loginNext").click(function (e) {
+                e.preventDefault();
+
+                let userName = $("#name").val();
+                let passWord = $("#password").val();
+
+                if (userName != "" && passWord != "") {
+                    $(".custom_alert").slideDown();
+                    $(".printMSG").html("LOGIN SUCCESSFULLY" + ' ' + userName);
+                    $(".printMSG").removeClass("text-danger").addClass("text-success");
+                } else {
+                    $(".custom_alert").slideDown();
+                    $(".printMSG").html("INVALID NAME OR PASSWORD");
+                    $(".printMSG").removeClass("text-success").addClass("text-danger");
+                }
+            })
+
+            $(".cancel_alert").click(function () {
+                $(".custom_alert").slideUp(function () {
+                    if ($(".printMSG").hasClass("text-success")) {
+                        $("#login_form").hide();
+                    } else {
+                        $("#login_form").show();
+                    }
+                });
+            })
+            $("#playSelect").click(function (e) {
+                e.preventDefault();
+            })
+            $("#levelSelect").click(function (e) {
+                e.preventDefault();
+            })
+            $("#optionsSelect").click(function (e) {
+                e.preventDefault();
+            })
+
+
+            $("#getradioVal").click(function () {
+                let checkedRadio = $('input[name="levelRadiobtn"]:checked');
+                let checkdataName = checkedRadio.data('name')
+
+                $(".custom_alert").slideDown();
+                $(".printMSG").html("YOU HAVE SELECTED" + ' ' + checkdataName + ' ' + "LEVEL");
+                $(".printMSG").removeClass("text-danger").addClass("text-success");
+            })
+
+
+            $("#getOptionsval").click(function () {
+                // for full screen 
+                if ($("#fullscreenToggle").is(':checked')) {
+                    const fullScreen = document.documentElement;
+
+                    if (fullScreen.requestFullscreen) {
+                        fullScreen.requestFullscreen();
+                    } else if (fullScreen.mozRequestFullScreen) {
+                        fullScreen.mozRequestFullScreen();
+                    } else if (fullScreen.msRequestFullscreen) {
+                        fullScreen.msRequestFullscreen();
+                    }
+                }
+
+                // for background change 
+
+                $(".themeImage").click(function () {
+                    let bgImage = $(this).attr('src');
+
+                    $(".fullscreen_bg").css("background", "url(" + bgImage + ")");
+                    $(".fullscreen_bg").addClass("background_classes");
+                })
+
+
+
+            });
+
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.invalidInput {
+    border: 2px solid red !important;
+    outline: none !important;
+}
+
+.invalidInput:focus {
+    box-shadow: 0px 0px 5px 1px rgba(255, 0, 0, 0.733) !important;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
+
+.fullscreen_bg {
+    min-height: 100vh;
+    max-height: fit-content;
+    background: linear-gradient(to top, #00000023, #01010130), url('img/nature.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.background_classes {
+    background-size: cover!important; 
+    background-position: center!important;
+    background-repeat: no-repeat!important;
+}
+
+.box_contianer {
+    min-height: 100vh;
+    max-height: fit-content;
+    width: auto;
+}
+
+.menu_container {
+    height: 500px;
+    background-color: #00000052;
+    position: relative;
+    animation: box_animate 5s linear infinite;
+}
+
+@keyframes box_animate {
+    0% {
+        transform: translateY(0px);
+    }
+
+    25% {
+        transform: translateY(3px);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    75% {
+        transform: translateY(-3px);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+
+
+}
+
+.btn_loginNext {
+    width: 150px;
+    background: radial-gradient(#53b54e, #1a9f37);
+    color: #fff !important;
+}
+
+.btn_play {
+    /* width: 150px; */
+    background: radial-gradient(#cd7e23, #a7671f);
+    color: #fff !important;
+    transition: 0.3s;
+}
+
+.btn_play:hover {
+    scale: 1.03;
+}
+
+.custom_alert {
+    /* border: 1px solid red; */
+    height: 120px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: white;
+    display: none;
+}
+
+/* #userMenu {
+    display: none;
+} */
+
+
+.bottom_bar {
+    position: absolute;
+    bottom: 10px;
+}
+
+/* Default style for radio buttons */
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999;
+    border-radius: 50%;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+/* Custom style for checked radio buttons */
+input[type="radio"]:checked {
+    border-color: chocolate;
+    background-color: chocolate;
+}
+
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999;
+    border-radius: 50%;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+/* Custom style for checked radio buttons */
+input[type="checkbox"]:checked {
+    border-color: chocolate;
+    background-color: chocolate;
+}
+
+.theme_image {
+    height: 120px;
+}
