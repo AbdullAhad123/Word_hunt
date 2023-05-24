@@ -184,15 +184,15 @@ input[type="checkbox"]:checked {
     scale: 1.03;
 }
 
-.btn_next {
-    background: radial-gradient(#cd7e23, #a7671f);
-    color: #fff !important;
-    transition: 0.3s;
-}
+    .btn_next {
+        background: radial-gradient(#cd7e23, #a7671f);
+        color: #fff !important;
+        transition: 0.3s;
+    }
 
-.btn_next:hover {
-    scale: 1.03;
-}
+    .btn_next:hover {
+        scale: 1.03;
+    }
 
 
 .startBtn{

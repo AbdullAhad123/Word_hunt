@@ -239,16 +239,17 @@
                     <div class="solutionLetter display_none my-5">
                         <div class="scrambleLetters">
                             <h3 class="display-6 fw-bold text-center scrambleChoco px-3 p-2">
-                                <span class="printScramble">SCRAMBLE</span>
+
                             </h3>
                         </div>
                         <div class="form-group answerInput text-center">
-                            <input type="text"
+                            <input type="text" id="scrambleAns"
                                 class="col-lg-4 col-md-5 col-sm-8 col-11 p-3 rounded-2 form_input shadow-lg">
                         </div>
                         <div class="mt-5 text-center">
                             <button class="btn btn_skip shadow p-2 px-5 my-2 mx-2 fw-bold"
                                 id="shuffleWord">SHUFFLE</button>
+                            <button class="btn btn_next shadow p-2 px-5 my-2 mx-2 fw-bold" id="backWord">BACK</button>
                             <button class="btn btn_next shadow p-2 px-5 my-2 mx-2 fw-bold" id="nextWord">NEXT</button>
                         </div>
                     </div>
@@ -501,44 +502,103 @@
 
             // array for scramble words 
 
-            jumbleWords = [
+            wordsArr = [
                 "elephant", "coconut", "colddrink", "motorcycle", "android", "laptop", "chemistry", "puzzle", "scramble", "energy"
             ]
 
             // start game to change view 
 
+            let currentIndex = 0;
 
             $("#startGame").click(function (e) {
                 e.preventDefault();
                 $(".startBtn").addClass("display_none");
-                $(".solutionLetter").removeClass("display_none")
+                $(".solutionLetter").removeClass("display_none");
 
-                var text = $(jumbleWords).text();
-
-                // Split the text into an array of characters
-                var characters = text.split('');
-
-                // Shuffle the array of characters
+                var characters = wordsArr[currentIndex].split('');
                 var shuffledCharacters = characters.sort(function () {
                     return 0.5 - Math.random();
                 });
-
-                // Join the shuffled characters back into a string
                 var shuffledText = shuffledCharacters.join('');
 
-                // Set the shuffled text back to the span
-                console.log(shuffledText);
+                $(".scrambleChoco").append('<span class="printScramble">' + shuffledText.toUpperCase() + '</span>');
+
+                // console.log(shuffledText);
+
+                $('#shuffleWord').on('click', function () {
+                    var text = $('.printScramble').text();
+
+                    var characters = text.split('');
+
+                    var shuffledCharacters = characters.sort(function () {
+                        return 0.5 - Math.random();
+                    });
+
+                    var shuffledText = shuffledCharacters.join('');
+
+                    $('.printScramble').text(shuffledText);
+
+                });
+
+                // if (answerInp == wordsArr[currentIndex] ) {
+                //         console.log("ok");
+                //     } else {
+                //         console.log("nh");
+                //     }
+
+                $("#scrambleAns").keyup(function () {
+                    let userAnswer = $(this).val();
+
+                    if (userAnswer === wordsArr[currentIndex]) {
+
+                        $(".custom_alert").slideDown();
+                        $(".printMSG").html("CORRECT ASNWER");
+                        $(".printMSG").removeClass("text-danger").addClass("text-success");
+
+                        currentIndex++;
+
+                        if (currentIndex < wordsArr.length) {
+                            var characters = wordsArr[currentIndex].split('');
+                            var shuffledCharacters = characters.sort(function () {
+                                return 0.5 - Math.random();
+                            });
+                            var shuffledText = shuffledCharacters.join('');
+
+                            $(".scrambleChoco").empty().append('<span class="printScramble">' + shuffledText.toUpperCase() + '</span>');
+
+                            $("#nextWord").click(function () {
+
+                            })
+
+                            }
+
+
+                    }
+
+                    })
+
+
+
+
+                $("#backWord").click(function () {
+                    currentIndex--;
+                    if (currentIndex < wordsArr.length) {
+                        var characters = wordsArr[currentIndex].split('');
+                        var shuffledCharacters = characters.sort(function () {
+                            return 0.5 - Math.random();
+                        });
+                        var shuffledText = shuffledCharacters.join('');
+
+                        $(".scrambleChoco").empty().append('<span class="printScramble">' + shuffledText.toUpperCase() + '</span>');
+                    }
+                })
+
+
+
 
             })
 
 
-
-
-            // for (let i = 0; i < jumbleWords.length; i++) {
-
-            //     let transformArr = jumbleWords.toUpperCase();
-
-            // }
 
         })
 
